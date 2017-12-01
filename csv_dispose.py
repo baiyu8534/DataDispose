@@ -18,6 +18,7 @@ with open(filename) as f:
     for row in reader:
         highs.append(row[13])
 
+    # 相当于做了错误数据检查，把不合法的数据转换为合法数据。也可以用try,遇到不合法数据跳过
     print('highs::', highs)
     for index, v in enumerate(highs):
         if v == '':
@@ -30,9 +31,17 @@ plt.plot(list(range(0, 20)), highs[0:20], c='red')
 plt.title("Highs", fontsize='8')
 plt.xlabel("date", fontsize='16')
 plt.ylabel("H")
+# 可以让x轴的值斜着显示
 figure.autofmt_xdate()
 plt.tick_params(axis='both')
 
 plt.show()
 
+# datetime用法
 
+data = datetime.strptime('2017-11-11', '%Y-%m-%d')
+print(data)
+# 2017-11-11 00:00:00
+
+# 给两条折线之间填充颜色
+# plt.fill_between(dates,highs,lows,facecolor='blue',alpha=0.1)
